@@ -9,10 +9,10 @@ export class createOrphanage1605514136181 implements MigrationInterface {
                 {
                     name: 'id',
                     type: 'integer',
-                    unsigned: true,
-                    isPrimary: true,
-                    isGenerated: true,
-                    generationStrategy: 'increment'
+                    unsigned: true, // coluna n;ao pode ser negativa
+                    isPrimary: true, // indica que é a chave unica de cada usuário
+                    isGenerated: true, // coluna gerada automaticamente
+                    generationStrategy: 'increment' // vai ser auto increment
                 },
                 {
                     name: 'name',
@@ -21,8 +21,8 @@ export class createOrphanage1605514136181 implements MigrationInterface {
                 {
                     name: 'latitude',
                     type:'decimal',
-                    scale: 10,
-                    precision: 2
+                    scale: 10, // casas antes da virgula
+                    precision: 2 // casas depois da virgula
                 },
                 {
                     name: 'longitude',
@@ -37,6 +37,10 @@ export class createOrphanage1605514136181 implements MigrationInterface {
                 {
                     name: 'instructions',
                     type: 'text'
+                },
+                {
+                    name: 'opening_hours',
+                    type: 'varchar'
                 },
                 {
                     name: 'open_on_weekends',
