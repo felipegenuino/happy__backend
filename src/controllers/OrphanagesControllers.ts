@@ -9,9 +9,11 @@ export default {
     async index(request:Request, response: Response) {
         const orphanagesRepository = getRepository(Orphanage);
 
-        const Orphanages = await orphanagesRepository.find()
+        const orphanages = await orphanagesRepository.find({
+            relations: ['images']
+        })
 
-        return response.json(Orphanages)    
+        return response.json(orphanages)    
     },
 
     async show(request:Request, response: Response) {
@@ -20,7 +22,9 @@ export default {
 
         const orphanagesRepository = getRepository(Orphanage);
 
-        const orphanage = await orphanagesRepository.findOneOrFail(id)
+        const orphanage = await orphanagesRepository.findOneOrFail(id, {
+            relations: ['images']
+        })
 
         return response.json(orphanage)
     },
